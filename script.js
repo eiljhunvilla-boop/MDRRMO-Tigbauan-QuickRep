@@ -1,10 +1,23 @@
 // ==========================
 // QuickRep - MDRRMO Tigbauan
+// Single JavaScript File
 // ==========================
 
-const home = document.getElementById("home");
-const form = document.getElementById("formPage");
-const summaryPage = document.getElementById("summaryPage");
+// ---------- HOME PAGE ----------
+
+const sosBtn = document.getElementById("sosBtn");
+
+if (sosBtn) {
+
+    sosBtn.addEventListener("click", () => {
+
+        window.location.href = "report.html";
+
+    });
+
+}
+
+// ---------- REPORT PAGE ----------
 
 const dispatch = document.getElementById("dispatch");
 const callno = document.getElementById("callno");
@@ -14,49 +27,35 @@ const locationInput = document.getElementById("location");
 const personnel = document.getElementById("personnel");
 const vehicle = document.getElementById("vehicle");
 const driver = document.getElementById("driver");
+const generateBtn = document.getElementById("generateBtn");
 
-const summary = document.getElementById("summary");
-const copyBtn = document.getElementById("copyBtn");
-const newBtn = document.getElementById("newBtn");
+// Show / Hide Custom Type
 
-// ==========================
-// HOME
-// ==========================
+if(type){
 
-document.getElementById("sosBtn").addEventListener("click", () => {
+    type.addEventListener("change",()=>{
 
-    home.classList.add("hidden");
-    form.classList.remove("hidden");
+        if(type.value==="Custom"){
 
-});
+            customType.style.display="block";
+            customType.focus();
 
-// ==========================
-// CUSTOM TYPE
-// ==========================
+        }else{
 
-type.addEventListener("change", () => {
+            customType.style.display="none";
+            customType.value="";
 
-    if(type.value === "Custom"){
+        }
 
-        customType.style.display = "block";
-        customType.focus();
+    });
 
-    }else{
+}
 
-        customType.style.display = "none";
-        customType.value = "";
-
-    }
-
-});
-
-// ==========================
-// DATE
-// ==========================
+// Date
 
 function today(){
 
-    const d = new Date();
+    const d=new Date();
 
     return d.toLocaleDateString("en-US",{
 
@@ -68,44 +67,44 @@ function today(){
 
 }
 
-// ==========================
-// TIME
-// ==========================
+// Time
 
 function time(){
 
-    const d = new Date();
+    const d=new Date();
 
-    const h = String(d.getHours()).padStart(2,"0");
-    const m = String(d.getMinutes()).padStart(2,"0");
+    const h=String(d.getHours()).padStart(2,"0");
+    const m=String(d.getMinutes()).padStart(2,"0");
 
     return `${h}${m}H`;
 
 }
 
-// ==========================
-// GENERATE REPORT
-// ==========================
+// Generate Report
 
-document.getElementById("generateBtn").addEventListener("click", () => {
+if(generateBtn){
 
-    let callType = type.value;
+    generateBtn.addEventListener("click",()=>{
 
-    if(type.value === "Custom"){
+        let callType=type.value;
 
-        callType = customType.value.trim();
+        if(type.value==="Custom"){
 
-    }
+            callType=customType.value.trim();
 
-    if(callType === ""){
+            if(callType===""){
 
-        alert("Please enter a custom Type of Call.");
-        customType.focus();
-        return;
+                alert("Please enter a custom Type of Call.");
 
-    }
+                customType.focus();
 
-    const report =
+                return;
+
+            }
+
+        }
+
+        const report=
 `INCIDENT REPORT
 
 Dispatch: ${dispatch.value}
@@ -126,59 +125,80 @@ Vehicle: ${vehicle.value}
 
 Driver: ${driver.value}`;
 
-    summary.textContent = report;
+        sessionStorage.setItem("report",report);
 
-    form.classList.add("hidden");
-    summaryPage.classList.remove("hidden");
+        window.location.href="summary.html";
 
-});
+    });
 
-// ==========================
-// COPY
-// ==========================
+}
 
-copyBtn.addEventListener("click", async () => {
+// Press Enter on Custom Type
 
-    try{
+if(customType){
 
-        await navigator.clipboard.writeText(summary.textContent);
+    customType.addEventListener("keypress",(e)=>{
 
-        copyBtn.innerHTML = "✅ Report Copied!";
+        if(e.key==="Enter"){
 
-        setTimeout(()=>{
+            generateBtn.click();
 
-            copyBtn.innerHTML = "📋 Copy Report";
+        }
 
-        },2000);
+    });
 
-    }catch{
+}
 
-        alert("Unable to copy report.");
+// ---------- SUMMARY PAGE ----------
 
-    }
+const summary=document.getElementById("summary");
+const copyBtn=document.getElementById("copyBtn");
+const newBtn=document.getElementById("newBtn");
 
-});
+if(summary){
 
-// ==========================
-// NEW REPORT
-// ==========================
+    summary.textContent=sessionStorage.getItem("report") || "No report generated.";
 
-newBtn.addEventListener("click",()=>{
+}
 
-    location.reload();
+// Copy
 
-});
+if(copyBtn){
 
-// ==========================
-// ENTER KEY
-// ==========================
+    copyBtn.addEventListener("click",async()=>{
 
-customType.addEventListener("keypress",(e)=>{
+        try{
 
-    if(e.key==="Enter"){
+            await navigator.clipboard.writeText(summary.textContent);
 
-        document.getElementById("generateBtn").click();
+            copyBtn.innerHTML="✅ Report Copied!";
 
-    }
+            setTimeout(()=>{
 
-});
+                copyBtn.innerHTML="📋 Copy Report";
+
+            },2000);
+
+        }catch{
+
+            alert("Unable to copy report.");
+
+        }
+
+    });
+
+}
+
+// New Report
+
+if(newBtn){
+
+    newBtn.addEventListener("click",()=>{
+
+        sessionStorage.removeItem("report");
+
+        window.location.href="index.html";
+
+    });
+
+}

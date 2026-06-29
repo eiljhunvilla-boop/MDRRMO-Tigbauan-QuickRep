@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>QuickRep - Summary</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="app-container">
+
+<h2>REPORT SUMMARY</h2>
+
+<pre id="summary"></pre>
+
+<button id="copyBtn">
+📋 Copy Report
+</button>
+
+<button id="newBtn">
+New Report
+</button>
+
+</div>
+
+<script>
+
+const summary=document.getElementById("summary");
+
+summary.textContent=sessionStorage.getItem("report") || "No report generated.";
+
+document.getElementById("copyBtn").onclick=async()=>{
+
+await navigator.clipboard.writeText(summary.textContent);
+
+copyBtn.innerHTML="✅ Report Copied";
+
+setTimeout(()=>{
+
+copyBtn.innerHTML="📋 Copy Report";
+
+},2000);
+
+};
+
+document.getElementById("newBtn").onclick=()=>{
+
+sessionStorage.removeItem("report");
+
+window.location.href="index.html";
+
+};
+
+</script>
+
+</body>
+</html>

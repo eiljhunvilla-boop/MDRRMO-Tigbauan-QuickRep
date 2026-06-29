@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>QuickRep - Incident Report</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="app-container">
+
+<h2>INCIDENT REPORT</h2>
+
+<div class="card">
+
+<label>Dispatch</label>
+<input id="dispatch" placeholder="Enter Dispatch" autocomplete="off">
+
+<label>Call #</label>
+<input id="callno" type="number" placeholder="Enter Call Number">
+
+<label>Type of Call</label>
+
+<select id="type">
+
+<option value="Trauma">Trauma</option>
+<option value="V/A">V/A</option>
+<option value="Medical">Medical</option>
+<option value="1070">1070</option>
+<option value="Custom">Custom...</option>
+
+</select>
+
+<input
+id="customType"
+type="text"
+placeholder="Enter custom type of call"
+style="display:none;"
+autocomplete="off">
+
+<label>Location</label>
+<input id="location" placeholder="Enter Location">
+
+<label>Responded Personnel</label>
+<input id="personnel" placeholder="Example: Villa, Agalono">
+
+<label>Vehicle</label>
+<input id="vehicle" placeholder="Example: RV-2">
+
+<label>Driver</label>
+<input id="driver" placeholder="Enter Driver">
+
+<button id="generateBtn">
+Generate Report
+</button>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
