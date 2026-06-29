@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>QuickRep</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="app-container">
+
+<!-- HOME PAGE -->
+
+<div id="home">
+
+    <img src="assets/MDRRMO.jpg" class="logo" alt="MDRRMO Logo">
+
+    <h1>
+        Quick<span>Rep</span>
+    </h1>
+
+    <p class="subtitle">
+        MDRRMO Tigbauan Incident Report System
+    </p>
+
+    <button id="sosBtn">
+        SOS
+    </button>
+
+    <p class="powered">
+        Powered by MDRRMO Tigbauan
+    </p>
+
+    <p class="footer">
+        For Emergency Purposes Only
+    </p>
+
+</div>
+
+<!-- FORM PAGE -->
+
+<div id="formPage" class="hidden">
+
+<h2>INCIDENT REPORT</h2>
+
+<div class="card">
+
+<label>Dispatch</label>
+<input
+id="dispatch"
+placeholder="Enter Dispatch"
+autocomplete="off">
+
+<label>Call #</label>
+<input
+id="callno"
+type="number"
+placeholder="Enter Call Number">
+
+<label>Type of Call</label>
+
+<select id="type">
+
+<option value="Trauma">Trauma</option>
+<option value="V/A">V/A</option>
+<option value="Medical">Medical</option>
+<option value="1070">1070</option>
+<option value="Custom">Custom...</option>
+
+</select>
+
+<input
+type="text"
+id="customType"
+placeholder="Enter custom type of call"
+style="display:none;"
+autocomplete="off">
+
+<label>Location</label>
+<input
+id="location"
+placeholder="Enter Location"
+autocomplete="off">
+
+<label>Responded Personnel</label>
+<input
+id="personnel"
+placeholder="Example: Villa, Agalono"
+autocomplete="off">
+
+<label>Vehicle</label>
+<input
+id="vehicle"
+placeholder="Example: RV-2"
+autocomplete="off">
+
+<label>Driver</label>
+<input
+id="driver"
+placeholder="Enter Driver"
+autocomplete="off">
+
+<button id="generateBtn">
+Generate Report
+</button>
+
+</div>
+
+</div>
+
+<!-- SUMMARY PAGE -->
+
+<div id="summaryPage" class="hidden">
+
+<h2>REPORT SUMMARY</h2>
+
+<pre id="summary"></pre>
+
+<button id="copyBtn">
+📋 Copy Report
+</button>
+
+<button id="newBtn">
+New Report
+</button>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
