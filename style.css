@@ -1,3 +1,7 @@
+/* ==========================
+   QuickRep - Responsive CSS
+   ========================== */
+
 *{
     margin:0;
     padding:0;
@@ -5,28 +9,35 @@
     font-family:Arial,Helvetica,sans-serif;
 }
 
+html{
+    font-size:16px;
+    -webkit-text-size-adjust:100%;
+    scroll-behavior:smooth;
+}
+
 body{
 
     background:#edf2f7;
 
-    min-height:100vh;
+    min-height:100dvh;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
     padding:
-    max(20px,env(safe-area-inset-top))
-    max(20px,env(safe-area-inset-right))
-    max(20px,env(safe-area-inset-bottom))
-    max(20px,env(safe-area-inset-left));
+        max(16px,env(safe-area-inset-top))
+        max(16px,env(safe-area-inset-right))
+        max(16px,env(safe-area-inset-bottom))
+        max(16px,env(safe-area-inset-left));
 
 }
 
 .app-container{
 
-    width:100%;
-    max-width:520px;
+    width:min(100%,520px);
+
+    margin:auto;
 
 }
 
@@ -36,40 +47,62 @@ body{
 
 }
 
-/* HOME */
+/* ==========================
+   HOME
+   ========================== */
 
 #home{
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    width:100%;
 
     text-align:center;
 
 }
 
+/* ==========================
+   LOGO
+   ========================== */
+
 .logo{
 
-    width:200px;
-    height:200px;
+    width:clamp(110px,28vw,180px);
 
-    margin:0 auto 25px;
+    aspect-ratio:1/1;
+
+    border-radius:50%;
+
+    object-fit:cover;
 
     display:block;
 
-    border-radius:50%;
-    object-fit:cover;
+    margin-bottom:24px;
 
-    border:6px solid #ffffff;
+    border:5px solid white;
+
+    background:white;
 
     box-shadow:0 8px 25px rgba(0,0,0,.18);
 
-    background:#fff;
-
 }
+
+/* ==========================
+   TITLES
+   ========================== */
 
 h1{
 
-    font-size:58px;
+    font-size:clamp(2.3rem,8vw,3.6rem);
+
     font-weight:800;
 
     color:#111827;
+
+    line-height:1.1;
 
 }
 
@@ -81,36 +114,39 @@ h1 span{
 
 .subtitle{
 
-    margin-top:15px;
+    margin-top:12px;
 
-    font-size:22px;
+    width:90%;
+
+    font-size:clamp(1rem,3.8vw,1.35rem);
 
     color:#555;
 
-    line-height:1.4;
+    line-height:1.5;
 
 }
 
-/* SOS BUTTON */
+/* ==========================
+   SOS BUTTON
+   ========================== */
 
 #sosBtn{
 
-    width:220px;
-    height:220px;
+    width:clamp(160px,42vw,220px);
+
+    aspect-ratio:1;
 
     border-radius:50%;
 
     border:none;
 
-    margin:60px auto 0;
-
-    display:block;
+    margin-top:clamp(32px,8vw,60px);
 
     background:#e53935;
 
     color:white;
 
-    font-size:68px;
+    font-size:clamp(2.5rem,10vw,4rem);
 
     font-weight:bold;
 
@@ -118,7 +154,7 @@ h1 span{
 
     box-shadow:0 0 40px rgba(229,57,53,.45);
 
-    animation:pulse 1.4s infinite;
+    animation:pulse 1.5s infinite;
 
 }
 
@@ -148,11 +184,15 @@ transform:scale(1);
 
 }
 
+/* ==========================
+   FOOTER
+   ========================== */
+
 .powered{
 
-    margin-top:45px;
+    margin-top:32px;
 
-    font-size:19px;
+    font-size:clamp(.95rem,3vw,1.2rem);
 
     color:#555;
 
@@ -160,21 +200,23 @@ transform:scale(1);
 
 .footer{
 
-    margin-top:10px;
+    margin-top:8px;
+
+    font-size:clamp(.9rem,2.8vw,1rem);
 
     color:#888;
 
-    font-size:17px;
-
 }
 
-/* FORM */
+/* ==========================
+   FORM
+   ========================== */
 
 h2{
 
     text-align:center;
 
-    font-size:34px;
+    font-size:clamp(1.8rem,5vw,2.3rem);
 
     margin-bottom:20px;
 
@@ -184,11 +226,13 @@ h2{
 
 .card{
 
+    width:100%;
+
     background:white;
 
     border-radius:22px;
 
-    padding:28px;
+    padding:clamp(20px,5vw,30px);
 
     box-shadow:0 12px 30px rgba(0,0,0,.12);
 
@@ -198,11 +242,11 @@ label{
 
     display:block;
 
-    font-size:18px;
+    margin-top:18px;
+
+    font-size:clamp(.95rem,2.8vw,1.1rem);
 
     font-weight:bold;
-
-    margin-top:18px;
 
     color:#333;
 
@@ -215,15 +259,15 @@ select{
 
     margin-top:8px;
 
-    padding:18px;
+    padding:clamp(14px,4vw,18px);
 
     border-radius:12px;
 
     border:2px solid #d1d5db;
 
-    font-size:20px;
+    background:white;
 
-    background:#fff;
+    font-size:clamp(1rem,3.5vw,1.2rem);
 
     transition:.25s;
 
@@ -236,7 +280,13 @@ select:focus{
 
     outline:none;
 
+    box-shadow:0 0 0 4px rgba(21,101,192,.15);
+
 }
+
+/* ==========================
+   BUTTONS
+   ========================== */
 
 button{
 
@@ -244,7 +294,7 @@ button{
 
     margin-top:24px;
 
-    padding:18px;
+    padding:clamp(15px,4vw,18px);
 
     border:none;
 
@@ -254,7 +304,7 @@ button{
 
     color:white;
 
-    font-size:22px;
+    font-size:clamp(1rem,3.8vw,1.3rem);
 
     font-weight:bold;
 
@@ -276,98 +326,64 @@ button:active{
 
 }
 
-/* SUMMARY */
+/* ==========================
+   SUMMARY
+   ========================== */
 
 pre{
+
+    width:100%;
 
     background:white;
 
-    border-radius:20px;
+    border-radius:18px;
 
-    padding:24px;
-
-    font-size:19px;
-
-    line-height:1.7;
-
-    white-space:pre-wrap;
+    padding:20px;
 
     box-shadow:0 8px 25px rgba(0,0,0,.12);
 
-}
+    white-space:pre-wrap;
 
-/* MOBILE */
+    word-break:break-word;
 
-@media (max-width:600px){
+    overflow-wrap:anywhere;
 
-.logo{
+    line-height:1.6;
 
-width:120px;
-
-}
-
-h1{
-
-font-size:48px;
+    font-size:clamp(.95rem,3vw,1.1rem);
 
 }
 
-.subtitle{
+/* ==========================
+   TABLETS
+   ========================== */
 
-font-size:18px;
+@media (min-width:768px){
 
-}
+    .app-container{
 
-#sosBtn{
+        max-width:560px;
 
-width:180px;
-height:180px;
-
-font-size:58px;
-
-}
-
-.card{
-
-padding:22px;
-
-border-radius:18px;
+    }
 
 }
 
-h2{
+/* ==========================
+   SMALL PHONES
+   ========================== */
 
-font-size:28px;
+@media (max-width:360px){
 
-}
+    .card{
 
-label{
+        padding:18px;
 
-font-size:17px;
+    }
 
-}
+    button{
 
-input,
-select{
+        margin-top:18px;
 
-font-size:18px;
-
-padding:16px;
-
-}
-
-button{
-
-font-size:20px;
-
-padding:16px;
-
-}
-
-pre{
-
-font-size:17px;
-
-}
+    }
 
 }
